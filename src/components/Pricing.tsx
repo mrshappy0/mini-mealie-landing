@@ -133,7 +133,7 @@ export const Pricing = () => {
                     key={benefit}
                     className="flex"
                   >
-                    <Check className="text-green-500" />{" "}
+                    <Check className="text-orange-500" />{" "}
                     <h3 className="ml-2">{benefit}</h3>
                   </span>
                 ))}

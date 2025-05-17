@@ -44,9 +44,9 @@ export const HeroCards = () => {
             alt="user avatar"
             className="absolute grayscale-[0%] -top-12 rounded-full w-24 h-24 aspect-square object-cover"
           />
-          <CardTitle className="text-center">Leo Miranda</CardTitle>
+          <CardTitle className="text-center">Adam Shappy</CardTitle>
           <CardDescription className="font-normal text-primary">
-            Frontend Developer
+            Developer
           </CardDescription>
         </CardHeader>
 
@@ -144,7 +144,7 @@ export const HeroCards = () => {
                   key={benefit}
                   className="flex"
                 >
-                  <Check className="text-green-500" />{" "}
+                  <Check className="text-orange-500" />{" "}
                   <h3 className="ml-2">{benefit}</h3>
                 </span>
               )
