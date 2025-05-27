@@ -14,7 +14,6 @@ export const Hero = () => {
                         </span>{" "}
                         Your In-Browser
                     </h1>{" "}
-                    {" "}
                     <h2 className="inline">
                         <span className="inline bg-gradient-to-r from-[#FF7E19] via-[#FFA347] to-[#FFC178] text-transparent bg-clip-text">
                             Mealie
@@ -29,7 +28,15 @@ export const Hero = () => {
                 </p>
 
                 <div className="space-y-4 md:space-y-0 md:space-x-4">
-                    <Button className="w-full md:w-1/3">Get Started</Button>
+                    <Button className="w-full md:w-1/3">
+                        <a
+                            href="https://chromewebstore.google.com/detail/mini-mealie/lchfnbjpjoeejalacnpjnafenacmdocc"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            Get Started
+                        </a>
+                    </Button>
                     <a
                         rel="noreferrer noopener"
                         href="https://github.com/mrshappy0/mini-mealie"

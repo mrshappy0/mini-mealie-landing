@@ -18,35 +18,34 @@ interface FeatureProps {
 
 const features: FeatureProps[] = [
   {
-    title: "Responsive Design",
+    title: "Chrome Context Menu",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi nesciunt est nostrum omnis ab sapiente.",
+      "Mini Mealie enhances functionality by allowing users to add recipes to their Mealie server instance seamlessly; simply right-click on a recipe and select the 'Recipe Detected - Add Recipe to Mealie' option.",
     image: image4,
   },
   {
-    title: "Intuitive user interface",
+    title: "Bypass Paywalls",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi nesciunt est nostrum omnis ab sapiente.",
+      "Users have the flexibility to manage access by toggling a paywall ladder on or off, which directs the recipe creation process through a paywall when activated.",
     image: image3,
   },
   {
-    title: "AI-Powered insights",
+    title: "Seamless Server Navigation",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi nesciunt est nostrum omnis ab sapiente.",
+      "When connected to a server, the Mini Mealie Chrome pop-up icon offers a quick access feature, enabling users to click the icon and be swiftly directed to their Mealie instance.",
     image: image,
   },
 ];
 
 const featureList: string[] = [
-  "Dark/Light theme",
-  "Reviews",
-  "Features",
-  "Pricing",
-  "Contact form",
-  "Our team",
-  "Responsive design",
-  "Newsletter",
-  "Minimalist",
+  "Create Recipe",
+  "Recipe Detection",
+  "Context Menu",
+  "Paywall Ladder",
+  "Local/Remote Access",
+  "HTTP/HTTPS Support",
+  "Server Link",
+  "Chrome Pop-up",
 ];
 
 export const Features = () => {

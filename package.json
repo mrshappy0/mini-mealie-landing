@@ -1,6 +1,6 @@
 {
-  "name": "shadcn-landing-page-template",
-  "description": "Landing page template utilizing Shadcn, React, Typescript, and Tailwind CSS for rapid development and responsive design.",
+  "name": "mini-mealie-web-extension-landing-page",
+  "description": "A landing page for Mini Mealie Web Extension",
   "author": {
     "name": "Leopoldo Miranda",
     "email": "leomirandadev@gmail.com",
@@ -8,14 +8,8 @@
   },
   "license": "MIT",
   "keywords": [
-    "react",
-    "typescript",
-    "shadcn",
-    "shadcn/ui",
-    "tailwind",
     "landing-page",
-    "template",
-    "responsive-design"
+    "web-extension"
   ],
   "private": true,
   "version": "1.1.0",
@@ -24,7 +18,8 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "scrape": "tsx ./scripts/scrape-reviews.ts"
   },
   "dependencies": {
     "@radix-ui/react-accordion": "^1.2.0",
@@ -47,16 +42,17 @@
     "@types/node": "^20.14.2",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
-    "@typescript-eslint/eslint-plugin": "^7.12.0",
-    "@typescript-eslint/parser": "^7.12.0",
+    "@typescript-eslint/eslint-plugin": "^8.32.1",
+    "@typescript-eslint/parser": "^8.32.1",
     "@vitejs/plugin-react": "^4.3.0",
     "autoprefixer": "^10.4.19",
-    "eslint": "^8.53.0",
-    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint": "^9.27.0",
+    "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.4",
     "postcss": "^8.4.38",
     "tailwindcss": "^3.4.4",
-    "typescript": "^5.4.5",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3",
     "vite": "^5.2.13"
   },
   "pnpm": {
