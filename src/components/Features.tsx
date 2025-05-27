@@ -30,7 +30,7 @@ const features: FeatureProps[] = [
     image: image3,
   },
   {
-    title: "Seamless Server Navigation",
+    title: "Seamless Navigation",
     description:
       "When connected to a server, the Mini Mealie Chrome pop-up icon offers a quick access feature, enabling users to click the icon and be swiftly directed to their Mealie instance.",
     image: image,
