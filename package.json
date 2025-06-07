@@ -1,7 +1,6 @@
 {
     "name": "mini-mealie-web-extension-landing-page",
     "description": "A landing page for Mini Mealie Web Extension",
-    "homepage": "https://shaplabs.org/mini-mealie",
     "author": {
         "name": "AdamShappy",
         "email": "atom@shaplabs.net",
