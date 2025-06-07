@@ -54,7 +54,53 @@ export const About = () => {
                             </p>
                         </div>
 
-                        <Statistics />
+                        {/* <div className="pt-2">
+                            <div className="mb-2 flex justify-start">
+                                <div className="max-w-sm">
+                                    <p className="text-sm font-semibold text-foreground tracking-wide uppercase">
+                                        Mini Mealie Spotlight
+                                    </p>
+                                </div>
+                            </div>
+
+                            <Statistics />
+                        </div> */}
+                        <section className="mt-8">
+                            <div className="rounded-2xl border border-orange-400/20 bg-gradient-to-br from-[#2b1a12] to-[#1a100b] p-6 shadow-[0_0_30px_rgba(255,102,0,0.08)]">
+                                <p className="align-right text-orange-400 font-semibold uppercase tracking-wide mb-4 text-sm">
+                                    Mini Mealie Spotlight
+                                </p>
+                                {/* <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 text-center text-white"> */}
+                                    {/* <div className="flex flex-col items-center space-y-1">
+                                        <p className="text-3xl font-bold">
+                                            74+
+                                        </p>
+                                        <p className="text-sm text-gray-400">
+                                            Installs
+                                        </p>
+                                    </div>
+                                    <div className="flex flex-col items-center space-y-1">
+                                        <p className="text-3xl font-bold">4</p>
+                                        <p className="text-sm text-gray-400">
+                                            Stargazers
+                                        </p>
+                                    </div>
+                                    <div className="flex flex-col items-center space-y-1">
+                                        <p className="text-3xl font-bold">0</p>
+                                        <p className="text-sm text-gray-400">
+                                            Open Issues
+                                        </p>
+                                    </div>
+                                    <div className="flex flex-col items-center space-y-1">
+                                        <p className="text-3xl font-bold">4</p>
+                                        <p className="text-sm text-gray-400">
+                                            Features
+                                        </p>
+                                    </div> */}
+                                    <Statistics />
+                                </div>
+                            {/* </div> */}
+                        </section>
                     </div>
                 </div>
             </div>

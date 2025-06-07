@@ -9,7 +9,7 @@ const __dirname = dirname(__filename);
 const EXTENSION_ID = "lchfnbjpjoeejalacnpjnafenacmdocc";
 const TARGET_URL = `https://chrome.google.com/webstore/detail/${EXTENSION_ID}/reviews`;
 
-async function getReviewsWithRatings() {
+async function getChromeWebStoreInfo() {
     const browser = await puppeteer.launch({
         executablePath:
             "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome", // TODO: this will only run on my machine. Allow it to run in Github actions pipeline
@@ -102,17 +102,33 @@ async function getReviewsWithRatings() {
             return extractedReviews;
         });
 
+        const numberOfUsers = await page.evaluate(() => {
+            const userSection = document.evaluate(
+                "//main/header/section/section/div/div[3]",
+                document,
+                null,
+                XPathResult.FIRST_ORDERED_NODE_TYPE,
+                null
+            ).singleNodeValue as Element | null;
+
+            const textContent = userSection?.textContent?.trim() ?? "100 users";
+            const match = textContent.match(/(\d+)\s*users/);
+            return match ? match[1] : "0";
+        });
+
         const outputPath = resolve(__dirname, "../src/reviewData.ts");
         const fileContent = `
-      export interface Review {
-        reviewerName: string;
-        starRating: string;
-        stars: number;
-        reviewText: string;
-      }
+export interface Review {
+  reviewerName: string;
+  starRating: string;
+  stars: number;
+  reviewText: string;
+}
 
-      export const reviews: Review[] = ${JSON.stringify(reviews, null, 2)};
-    `;
+export const reviews: Review[] = ${JSON.stringify(reviews, null, 2)};
+
+export const numberOfUsers = "${numberOfUsers}";
+`;
 
         writeFileSync(outputPath, fileContent);
 
@@ -124,4 +140,4 @@ async function getReviewsWithRatings() {
     }
 }
 
-getReviewsWithRatings();
+getChromeWebStoreInfo();

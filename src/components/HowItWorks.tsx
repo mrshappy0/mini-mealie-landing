@@ -10,27 +10,27 @@ interface FeatureProps {
 const features: FeatureProps[] = [
   {
     icon: <MedalIcon />,
-    title: "Accessibility",
+    title: "Installation",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum quas provident cum",
+      "Install Mini Mealie by downloading the app from the Chrome Web Store.",
   },
   {
     icon: <MapIcon />,
-    title: "Community",
+    title: "Connect",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum quas provident cum",
+      "Acquire your Mealie instance URL and API key, then connect Mini Mealie to your Mealie instance.",
   },
   {
     icon: <PlaneIcon />,
-    title: "Scalability",
+    title: "Search",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum quas provident cum",
+      "Search for recipes on your favorite Recipe websites.",
   },
   {
     icon: <GiftIcon />,
-    title: "Gamification",
+    title: "Right Click",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum quas provident cum",
+      "Right click on any recipe to save it to your Mealie instance.",
   },
 ];
 
@@ -48,8 +48,7 @@ export const HowItWorks = () => {
         Step-by-Step Guide
       </h2>
       <p className="md:w-3/4 mx-auto mt-4 mb-8 text-xl text-muted-foreground">
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veritatis
-        dolor pariatur sit!
+        Less than four easy steps!
       </p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">

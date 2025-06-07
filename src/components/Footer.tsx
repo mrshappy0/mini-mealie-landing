@@ -1,4 +1,5 @@
 import { LogoIcon } from "./Icons";
+import { routeList } from "./Navbar";
 
 export const Footer = () => {
     return (
@@ -18,102 +19,66 @@ export const Footer = () => {
                 </div>
 
                 <div className="flex flex-col gap-2">
-                    <h3 className="font-bold text-lg">Follow US</h3>
+                    <h3 className="font-bold text-lg">Follow Us</h3>
                     <div>
                         <a
                             rel="noreferrer noopener"
-                            href="#"
+                            href="https://github.com/mrshappy0/mini-mealie"
+                            target="_blank"
                             className="opacity-60 hover:opacity-100"
                         >
                             Github
                         </a>
                     </div>
-
-                    <div>
-                        <a
-                            rel="noreferrer noopener"
-                            href="#"
-                            className="opacity-60 hover:opacity-100"
-                        >
-                            Twitter
-                        </a>
-                    </div>
-
-                    <div>
-                        <a
-                            rel="noreferrer noopener"
-                            href="#"
-                            className="opacity-60 hover:opacity-100"
-                        >
-                            Dribbble
-                        </a>
-                    </div>
                 </div>
 
                 <div className="flex flex-col gap-2">
-                    <h3 className="font-bold text-lg">Platforms</h3>
+                    <h3 className="font-bold text-lg">Browsers</h3>
                     <div>
                         <a
                             rel="noreferrer noopener"
-                            href="#"
+                            href="https://chromewebstore.google.com/detail/mini-mealie/lchfnbjpjoeejalacnpjnafenacmdocc"
+                            target="_blank"
                             className="opacity-60 hover:opacity-100"
                         >
-                            Web
+                            Chrome
                         </a>
                     </div>
 
-                    <div>
+                   <div className="opacity-40">
                         <a
                             rel="noreferrer noopener"
                             href="#"
-                            className="opacity-60 hover:opacity-100"
+                            className="pointer-events-none cursor-not-allowed"
                         >
-                            Mobile
+                            Firefox <span style={{ color: 'orange', fontStyle: 'italic' }}>- Coming Soon!</span>
                         </a>
                     </div>
 
-                    <div>
+                    <div className="opacity-40">
                         <a
                             rel="noreferrer noopener"
                             href="#"
-                            className="opacity-60 hover:opacity-100"
+                            className="pointer-events-none cursor-not-allowed"
                         >
-                            Desktop
+                            Safari <span style={{ color: 'orange', fontStyle: 'italic' }}>- Coming Soon!</span>
                         </a>
                     </div>
                 </div>
 
                 <div className="flex flex-col gap-2">
                     <h3 className="font-bold text-lg">About</h3>
-                    <div>
-                        <a
+                    {routeList.map((route, index) => (
+                        <div key={index}>
+                            <a
                             rel="noreferrer noopener"
-                            href="#"
+                                href={route.href}
                             className="opacity-60 hover:opacity-100"
                         >
-                            Features
+                                {route.label}
                         </a>
                     </div>
-
-                    <div>
-                        <a
-                            rel="noreferrer noopener"
-                            href="#testimonials"
-                            className="opacity-60 hover:opacity-100"
-                        >
-                            Testimonials
-                        </a>
-                    </div>
-
-                    <div>
-                        <a
-                            rel="noreferrer noopener"
-                            href="#faq"
-                            className="opacity-60 hover:opacity-100"
-                        >
-                            FAQ
-                        </a>
-                    </div>
+                    ))}
                 </div>
 
                 <div className="flex flex-col gap-2">
@@ -122,45 +87,16 @@ export const Footer = () => {
                         <a
                             rel="noreferrer noopener"
                             href="#"
-                            className="opacity-60 hover:opacity-100"
+                            className="opacity-40 pointer-events-none cursor-not-allowed"
                         >
-                            Youtube
-                        </a>
-                    </div>
-
-                    <div>
-                        <a
-                            rel="noreferrer noopener"
-                            href="#"
-                            className="opacity-60 hover:opacity-100"
-                        >
-                            Discord
-                        </a>
-                    </div>
-
-                    <div>
-                        <a
-                            rel="noreferrer noopener"
-                            href="#"
-                            className="opacity-60 hover:opacity-100"
-                        >
-                            Twitch
+                            Youtube <span style={{ color: 'orange', fontStyle: 'italic' }}>- Coming Soon!</span>
                         </a>
                     </div>
                 </div>
             </section>
-
             <section className="container pb-14 text-center">
                 <h3>
-                    &copy; 2024 Landing page made by{" "}
-                    <a
-                        rel="noreferrer noopener"
-                        target="_blank"
-                        href="https://www.linkedin.com/in/leopoldo-miranda/"
-                        className="text-primary transition-all border-primary hover:border-b-2"
-                    >
-                        Leo Miranda
-                    </a>
+                    &copy; {new Date().getFullYear()} Mini Mealie. All rights reserved.
                 </h3>
             </section>
         </footer>

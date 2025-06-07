@@ -1,4 +1,5 @@
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
+import mountainMe from "../assets/mountain-me-GIMPed.jpg";
 import { Badge } from "./ui/badge";
 import { Button, buttonVariants } from "@/components/ui/button";
 import {
@@ -9,40 +10,70 @@ import {
     CardTitle,
     CardFooter,
 } from "@/components/ui/card";
+import { reviews as scrapedReviews } from "../reviewData";
 import { Check, Linkedin } from "lucide-react";
 import { LightBulbIcon } from "./Icons";
 import { GitHubLogoIcon } from "@radix-ui/react-icons";
+import { useEffect, useState } from "react";
+import { mockTestimonials } from "@/lib/constants";
+import { convertReviewsToTestimonials, getInitials } from "@/lib/utils";
+import { TestimonialProps } from "@/lib/types";
 
 export const HeroCards = () => {
+    const [testimonial, setTestimonial] = useState<TestimonialProps>(
+        mockTestimonials[0]
+    );
+
+    useEffect(() => {
+        try {
+            const fetchedTestimonials =
+                convertReviewsToTestimonials(scrapedReviews);
+            const sourceData =
+                fetchedTestimonials.length > 0
+                    ? fetchedTestimonials
+                    : mockTestimonials;
+            const randomIndex = Math.floor(Math.random() * sourceData.length);
+            setTestimonial(sourceData[randomIndex]);
+        } catch (error) {
+            console.error("Error processing reviews:", error);
+        }
+    }, []);
     return (
         <div className="hidden lg:flex flex-row flex-wrap gap-8 relative w-[700px] h-[500px]">
             {/* Testimonial */}
-            <Card className="absolute w-[340px] -top-[15px] drop-shadow-xl shadow-black/10 dark:shadow-white/10">
+            <a href="#testimonials">
+                <Card className="absolute w-[340px] -top-[15px] drop-shadow-xl shadow-black/10 dark:shadow-white/10 cursor-pointer">
                 <CardHeader className="flex flex-row items-center gap-4 pb-2">
                     <Avatar>
-                        <AvatarImage
-                            alt=""
-                            src="" // TODO: replace with a default avatar
-                        />
-                        <AvatarFallback>SH</AvatarFallback>
+                        <AvatarImage alt="" src="" />
+                        <AvatarFallback>
+                            {getInitials(testimonial.name ?? "")}
+                        </AvatarFallback>
                     </Avatar>
 
                     <div className="flex flex-col">
                         <CardTitle className="text-lg">
-                            Reactive Pigeon
+                            {testimonial.name}
                         </CardTitle>
-                        <CardDescription>@reactive_pigeon</CardDescription>
+                        <CardDescription>
+                            {testimonial.userName}
+                        </CardDescription>
                     </div>
                 </CardHeader>
 
-                <CardContent>Mini Mealie is awesome possum!</CardContent>
+                <CardContent>
+                    {testimonial.comment.length > 100
+                        ? testimonial.comment.substring(0, 35) + "..."
+                        : testimonial.comment}
+                </CardContent>
             </Card>
+            </a>
 
             {/* Team */}
             <Card className="absolute right-[20px] top-4 w-80 flex flex-col justify-center items-center drop-shadow-xl shadow-black/10 dark:shadow-white/10">
                 <CardHeader className="mt-8 flex justify-center items-center pb-2">
                     <img
-                        src="https://i.pravatar.cc/150?img=58"
+                        src={mountainMe}
                         alt="user avatar"
                         className="absolute grayscale-[0%] -top-12 rounded-full w-24 h-24 aspect-square object-cover"
                     />
@@ -172,7 +203,8 @@ export const HeroCards = () => {
                     <div>
                         <CardTitle>Actively Growing</CardTitle>
                         <CardDescription className="text-md mt-2">
-                          Built in collaboration with the community—your feedback drives every improvement.
+                            Built in collaboration with the community—your
+                            feedback drives every improvement.
                         </CardDescription>
                     </div>
                 </CardHeader>
