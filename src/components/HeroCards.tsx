@@ -62,8 +62,8 @@ export const HeroCards = () => {
                 </CardHeader>
 
                 <CardContent>
-                    {testimonial.comment.length > 100
-                        ? testimonial.comment.substring(0, 35) + "..."
+                    {testimonial.comment.length > 40
+                        ? testimonial.comment.substring(0, 40) + "..."
                         : testimonial.comment}
                 </CardContent>
             </Card>
