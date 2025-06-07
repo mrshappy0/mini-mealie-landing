@@ -4,7 +4,7 @@ import { defineConfig } from "vite";
 
 export default defineConfig({
     plugins: [react()],
-    base: "/mini-mealie-landing/",
+    base: "/mini-mealie/",
     resolve: {
         alias: {
             "@": path.resolve(__dirname, "./src"),
