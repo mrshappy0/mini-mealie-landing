@@ -5,7 +5,6 @@ import {
     AccordionTrigger,
 } from "@/components/ui/accordion";
 import { toast } from "react-toastify";
-import { useTheme } from "@/components/theme-provider";
 
 interface FAQProps {
     question: string;

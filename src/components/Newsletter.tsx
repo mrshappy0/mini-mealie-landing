@@ -2,10 +2,10 @@ import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 
 export const Newsletter = () => {
-    const handleSubmit = (e: any) => {
-        e.preventDefault();
-        console.log("Subscribed!");
-    };
+    // const handleSubmit = (e: any) => {
+    //     e.preventDefault();
+    //     console.log("Subscribed!");
+    // };
 
     return (
         <section id="newsletter">
