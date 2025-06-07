@@ -1,56 +1,53 @@
-# Shadcn/UI Landing Page Template
+# Mini Mealie Landing Page
 
-## <a href="https://ui.shadcn.com/" target="_blank">ShadcnUI</a> + <a href="https://react.dev/" target="_blank">React</a> + <a href="https://www.typescriptlang.org/" target="_blank">TypeScript</a> + <a href="https://tailwindcss.com/" target="_blank">Tailwind</a>.
+## [Mini Mealie UI](https://minimealie.com) + [React](https://react.dev/) + [TypeScript](https://www.typescriptlang.org/) + [TailwindCSS](https://tailwindcss.com/).
 
-![shadch-landing-page](https://github.com/leoMirandaa/shadcn-landing-page/assets/61714687/3ba7b51f-9589-4541-800a-5ab7cecad1b5)
+The Mini Mealie Landing Page serves as the promotional and informational hub for Mini Mealie, a handy web extension designed to streamline meal planning and grocery shopping. Built to enhance user efficiency, this landing page showcases the extension's capabilities, helping users save time and reduce food waste by creating optimized shopping lists based on their stored recipes. By using React, TypeScript, and TailwindCSS, this template ensures not only a dynamic and aesthetically pleasing user experience but also showcases the technical prowess and modern development practices behind Mini Mealie.
 
-Build your React landing page effortlessly with the required sections to your project. <a href="https://shadcn-landing-page.vercel.app/" target="_blank">Live Demo</a>
+## Page Sections
 
-## Sections
+-   [x] Navbar
+-   [x] Sidebar (Mobile)
+-   [x] Hero
+-   [x] About Us
+-   [x] Statistics
+-   [x] How It Works
+-   [x] Key Features
+-   [x] Testimonials
+-   [x] Our Builders (Team)
+-   [ ] Newsletter (In-progress)
+-   [x] FAQ
+-   [x] Footer
 
-- [x] Navbar
-- [x] Sidebar(mobile)
-- [x] Hero
-- [x] About
-- [x] Stats
-- [x] How It Works
-- [x] Features
-- [x] Call-to-Action (CTA)
-- [x] Testimonials
-- [x] Team
-- [x] Newsletter
-- [x] Frequently Asked Questions(FAQ)
-- [x] Footer
+## Core Features
 
-## Features
+-   [x] Fully Responsive Design
+-   [x] Easy Navigation
+-   [x] Dark Mode Support
+-   [x] Meta Tags Optimization
 
-- [x] Fully Responsive Design
-- [x] User Friendly Navigation
-- [x] Dark Mode
-- [x] Meta tags
+## Setup Instructions
 
-## How to install
-
-1. Clone this repository:
+1. Clone the repository:
 
 ```bash
-git clone https://github.com/leoMirandaa/shadcn-landing-page.git
+git clone https://github.com/miniMealie/mini-mealie-landing-page.git
 ```
 
-2. Go into project
+2. Navigate to the project directory:
 
 ```bash
-cd shadcn-landing-page
+cd mini-mealie-landing-page
 ```
 
-3. Install dependencies
+3. Install project dependencies:
 
 ```bash
-npm install
+pnpm install
 ```
 
-4. Run project
+4. Start the development server:
 
 ```bash
-npm run dev
+pnpm dev
 ```
