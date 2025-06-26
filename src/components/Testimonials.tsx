@@ -7,7 +7,6 @@ import {
     CardHeader,
     CardTitle,
 } from "@/components/ui/card";
-import { reviews as scrapedReviews } from "../reviewData";
 import { convertReviewsToTestimonials, getInitials } from "@/lib/utils";
 import { mockTestimonials } from "@/lib/constants";
 import { TestimonialProps } from "@/lib/types";
@@ -17,15 +16,27 @@ export const Testimonials = () => {
         useState<TestimonialProps[]>(mockTestimonials);
 
     useEffect(() => {
-        try {
-            const fetchedTestimonials =
-                convertReviewsToTestimonials(scrapedReviews);
-            if (fetchedTestimonials.length > 0) {
-                setTestimonials(fetchedTestimonials);
+        const fetchReviews = async () => {
+            try {
+                const res = await fetch(
+                    "https://adott4o6c0.execute-api.us-west-2.amazonaws.com/stats"
+                );
+                const data = await res.json();
+                const fetchedTestimonials = convertReviewsToTestimonials(
+                    data.reviews
+                );
+
+                setTestimonials(
+                    fetchedTestimonials.length > 0
+                        ? fetchedTestimonials
+                        : mockTestimonials
+                );
+            } catch (err) {
+                console.error("Failed to fetch stats:", err);
             }
-        } catch (error) {
-            console.error("Error processing reviews:", error);
-        }
+        };
+
+        fetchReviews();
     }, []);
 
     return (

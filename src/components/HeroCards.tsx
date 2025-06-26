@@ -10,7 +10,6 @@ import {
     CardTitle,
     CardFooter,
 } from "@/components/ui/card";
-import { reviews as scrapedReviews } from "../reviewData";
 import { Check, Linkedin } from "lucide-react";
 import { LightBulbIcon } from "./Icons";
 import { GitHubLogoIcon } from "@radix-ui/react-icons";
@@ -25,48 +24,61 @@ export const HeroCards = () => {
     );
 
     useEffect(() => {
-        try {
-            const fetchedTestimonials =
-                convertReviewsToTestimonials(scrapedReviews);
-            const sourceData =
-                fetchedTestimonials.length > 0
-                    ? fetchedTestimonials
-                    : mockTestimonials;
-            const randomIndex = Math.floor(Math.random() * sourceData.length);
-            setTestimonial(sourceData[randomIndex]);
-        } catch (error) {
-            console.error("Error processing reviews:", error);
-        }
+        const fetchReviews = async () => {
+            try {
+                const res = await fetch(
+                    "https://adott4o6c0.execute-api.us-west-2.amazonaws.com/stats"
+                );
+                const data = await res.json();
+                const fetchedTestimonials = convertReviewsToTestimonials(
+                    data.reviews
+                );
+
+                const sourceData =
+                    fetchedTestimonials.length > 0
+                        ? fetchedTestimonials
+                        : mockTestimonials;
+
+                const randomIndex = Math.floor(
+                    Math.random() * sourceData.length
+                );
+                setTestimonial(sourceData[randomIndex]);
+            } catch (err) {
+                console.error("Failed to fetch stats:", err);
+            }
+        };
+
+        fetchReviews();
     }, []);
     return (
         <div className="hidden lg:flex flex-row flex-wrap gap-8 relative w-[700px] h-[500px]">
             {/* Testimonial */}
             <a href="#testimonials">
                 <Card className="absolute w-[340px] -top-[15px] drop-shadow-xl shadow-black/10 dark:shadow-white/10 cursor-pointer">
-                <CardHeader className="flex flex-row items-center gap-4 pb-2">
-                    <Avatar>
-                        <AvatarImage alt="" src="" />
-                        <AvatarFallback>
-                            {getInitials(testimonial.name ?? "")}
-                        </AvatarFallback>
-                    </Avatar>
+                    <CardHeader className="flex flex-row items-center gap-4 pb-2">
+                        <Avatar>
+                            <AvatarImage alt="" src="" />
+                            <AvatarFallback>
+                                {getInitials(testimonial.name ?? "")}
+                            </AvatarFallback>
+                        </Avatar>
 
-                    <div className="flex flex-col">
-                        <CardTitle className="text-lg">
-                            {testimonial.name}
-                        </CardTitle>
-                        <CardDescription>
-                            {testimonial.userName}
-                        </CardDescription>
-                    </div>
-                </CardHeader>
+                        <div className="flex flex-col">
+                            <CardTitle className="text-lg">
+                                {testimonial.name}
+                            </CardTitle>
+                            <CardDescription>
+                                {testimonial.userName}
+                            </CardDescription>
+                        </div>
+                    </CardHeader>
 
-                <CardContent>
-                    {testimonial.comment.length > 40
-                        ? testimonial.comment.substring(0, 40) + "..."
-                        : testimonial.comment}
-                </CardContent>
-            </Card>
+                    <CardContent>
+                        {testimonial.comment.length > 40
+                            ? testimonial.comment.substring(0, 40) + "..."
+                            : testimonial.comment}
+                    </CardContent>
+                </Card>
             </a>
 
             {/* Team */}

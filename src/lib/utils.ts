@@ -1,7 +1,6 @@
 import { type ClassValue, clsx } from "clsx"
 import { twMerge } from "tailwind-merge"
-import { TestimonialProps } from "./types";
-import { Review } from "@/reviewData";
+import { Review, TestimonialProps } from "./types";
  
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))

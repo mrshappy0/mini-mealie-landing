@@ -4,3 +4,10 @@ export interface TestimonialProps {
     userName: string;
     comment: string;
 }
+
+export interface Review {
+  reviewerName: string;
+  starRating: string;
+  stars: number;
+  reviewText: string;
+}
