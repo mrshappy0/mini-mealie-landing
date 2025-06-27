@@ -1,9 +1,5 @@
 import { useEffect, useState } from "react";
 
-interface GitHubRepoData {
-    openIssues: string;
-    stargazers: string;
-}
 interface statsProps {
     url: string;
     quantity: string;
