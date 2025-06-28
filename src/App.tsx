@@ -10,27 +10,32 @@ import { Newsletter } from "./components/Newsletter";
 import { ScrollToTop } from "./components/ScrollToTop";
 import { Team } from "./components/Team";
 import { Testimonials } from "./components/Testimonials";
-import { ToastContainer } from 'react-toastify';
+import { ToastContainer } from "react-toastify";
 import "./App.css";
+import { useEffect } from "react";
+import { loadAnalytics } from "./lib/analytics";
 
 function App() {
-  return (
-    <>
-      <Navbar />
-      <Hero />
-      <About />
-      <HowItWorks />
-      <Features />
-      {/* <Cta /> */} {/* TODO: consider removing */}
-      <Testimonials />
-      <Team />
-      <Newsletter />
-      <FAQ />
-      <Footer />
-      <ScrollToTop />
-      <ToastContainer />
-    </>
-  );
+    useEffect(() => {
+        loadAnalytics();
+    }, []);
+    return (
+        <>
+            <Navbar />
+            <Hero />
+            <About />
+            <HowItWorks />
+            <Features />
+            {/* <Cta /> */} {/* TODO: consider removing */}
+            <Testimonials />
+            <Team />
+            <Newsletter />
+            <FAQ />
+            <Footer />
+            <ScrollToTop />
+            <ToastContainer />
+        </>
+    );
 }
 
 export default App;
