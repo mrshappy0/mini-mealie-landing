@@ -11,8 +11,9 @@ import {
     CardHeader,
     CardTitle,
 } from '@/components/ui/card';
+import { fetchFromMMCApi } from '@/lib/api';
 import { mockTestimonials } from '@/lib/constants';
-import { TestimonialProps } from '@/lib/types';
+import { Review, TestimonialProps } from '@/lib/types';
 import { convertReviewsToTestimonials, getInitials } from '@/lib/utils';
 
 import mountainMe from '../assets/mountain-me-GIMPed.jpg';
@@ -21,15 +22,17 @@ import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
 import { Badge } from './ui/badge';
 
 export const HeroCards = () => {
-    const [testimonial, setTestimonial] = useState<TestimonialProps>(mockTestimonials[0]);
+    const [testimonial, setTestimonial] = useState<TestimonialProps>();
 
     useEffect(() => {
         const fetchReviews = async () => {
             try {
-                const res = await fetch(
-                    'https://adott4o6c0.execute-api.us-west-2.amazonaws.com/stats',
-                );
-                const data = await res.json();
+                const data = await fetchFromMMCApi<{
+                    reviews: Review[];
+                    scrapedAt: string;
+                    numberOfUsers: string;
+                }>('/stats');
+
                 const fetchedTestimonials = convertReviewsToTestimonials(data.reviews);
 
                 const sourceData =
@@ -44,30 +47,36 @@ export const HeroCards = () => {
 
         fetchReviews();
     }, []);
+
+    console.log('image url:', testimonial?.image);
     return (
         <div className="hidden lg:flex flex-row flex-wrap gap-8 relative w-[700px] h-[500px]">
             {/* Testimonial */}
-            <a href="#testimonials">
-                <Card className="absolute w-[340px] -top-[15px] drop-shadow-xl shadow-black/10 dark:shadow-white/10 cursor-pointer">
-                    <CardHeader className="flex flex-row items-center gap-4 pb-2">
-                        <Avatar>
-                            <AvatarImage alt="" src="" />
-                            <AvatarFallback>{getInitials(testimonial.name ?? '')}</AvatarFallback>
-                        </Avatar>
+            {testimonial && (
+                <a href="#testimonials">
+                    <Card className="absolute w-[340px] -top-[15px] drop-shadow-xl shadow-black/10 dark:shadow-white/10 cursor-pointer">
+                        <CardHeader className="flex flex-row items-center gap-4 pb-2">
+                            <Avatar>
+                                <AvatarImage alt="" src={testimonial?.image ?? ''} />
+                                <AvatarFallback>
+                                    {getInitials(testimonial?.name ?? '')}
+                                </AvatarFallback>
+                            </Avatar>
 
-                        <div className="flex flex-col">
-                            <CardTitle className="text-lg">{testimonial.name}</CardTitle>
-                            <CardDescription>{testimonial.userName}</CardDescription>
-                        </div>
-                    </CardHeader>
+                            <div className="flex flex-col">
+                                <CardTitle className="text-lg">{testimonial?.name}</CardTitle>
+                                <CardDescription>{testimonial?.userName}</CardDescription>
+                            </div>
+                        </CardHeader>
 
-                    <CardContent>
-                        {testimonial.comment.length > 40
-                            ? testimonial.comment.substring(0, 40) + '...'
-                            : testimonial.comment}
-                    </CardContent>
-                </Card>
-            </a>
+                        <CardContent>
+                            {testimonial.comment.length > 40
+                                ? testimonial.comment.substring(0, 40) + '...'
+                                : testimonial.comment}
+                        </CardContent>
+                    </Card>
+                </a>
+            )}
 
             {/* Team */}
             <Card className="absolute right-[20px] top-4 w-80 flex flex-col justify-center items-center drop-shadow-xl shadow-black/10 dark:shadow-white/10">

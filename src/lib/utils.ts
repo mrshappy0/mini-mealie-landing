@@ -26,7 +26,7 @@ export const getInitials = (name: string) => {
 export const convertReviewsToTestimonials = (reviews: Review[] | undefined): TestimonialProps[] => {
     return (
         reviews?.map((review) => ({
-            image: '', // TODO: real scraped icon from google
+            image: review.profileImage,
             name: review.reviewerName,
             userName: `@${review.reviewerName.toLowerCase().replace(/\s+/g, '_')}`,
             comment: review.reviewText,

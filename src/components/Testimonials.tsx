@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { fetchFromMMCApi } from '@/lib/api';
 import { mockTestimonials } from '@/lib/constants';
-import { TestimonialProps } from '@/lib/types';
+import { Review, TestimonialProps } from '@/lib/types';
 import { convertReviewsToTestimonials, getInitials } from '@/lib/utils';
 
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
@@ -13,10 +14,11 @@ export const Testimonials = () => {
     useEffect(() => {
         const fetchReviews = async () => {
             try {
-                const res = await fetch(
-                    'https://adott4o6c0.execute-api.us-west-2.amazonaws.com/stats',
-                );
-                const data = await res.json();
+                const data = await fetchFromMMCApi<{
+                    reviews: Review[];
+                    scrapedAt: string;
+                    numberOfUsers: string;
+                }>('/stats');
                 const fetchedTestimonials = convertReviewsToTestimonials(data.reviews);
 
                 setTestimonials(
