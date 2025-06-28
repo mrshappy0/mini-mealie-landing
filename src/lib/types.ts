@@ -6,8 +6,8 @@ export interface TestimonialProps {
 }
 
 export interface Review {
-  reviewerName: string;
-  starRating: string;
-  stars: number;
-  reviewText: string;
+    reviewerName: string;
+    starRating: string;
+    stars: number;
+    reviewText: string;
 }

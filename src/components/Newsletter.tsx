@@ -1,5 +1,5 @@
-import { Button } from "./ui/button";
-import { Input } from "./ui/input";
+import { Button } from './ui/button';
+import { Input } from './ui/input';
 
 export const Newsletter = () => {
     // const handleSubmit = (e: any) => {
@@ -13,7 +13,7 @@ export const Newsletter = () => {
 
             <div className="container py-24 sm:py-32">
                 <h3 className="text-center text-4xl md:text-5xl font-bold">
-                    Join Our Feature{" "}
+                    Join Our Feature{' '}
                     <span className="bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text">
                         Newsletter
                     </span>
@@ -33,7 +33,9 @@ export const Newsletter = () => {
                         aria-label="email"
                         disabled
                     />
-                    <Button disabled title="Coming soon">Subscribe</Button>
+                    <Button disabled title="Coming soon">
+                        Subscribe
+                    </Button>
                 </form>
             </div>
 
