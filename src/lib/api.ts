@@ -12,4 +12,3 @@ export const fetchFromMMCApi = async <T>(endpoint: string): Promise<T> => {
     if (!res.ok) throw new Error(`API error: ${res.status}`);
     return res.json();
 };
-
