@@ -29,7 +29,7 @@ interface SociaNetworkslProps {
 
 const teamList: TeamProps[] = [
     {
-        imageUrl: mountainMe, // TODO: change to my photo
+        imageUrl: mountainMe,
         name: 'Adam Shappy',
         position: 'Creator & Lead Developer',
         description:
@@ -51,7 +51,7 @@ const teamList: TeamProps[] = [
         ],
     },
     {
-        imageUrl: carterBeach, // TODO: add carter's photo
+        imageUrl: carterBeach,
         name: 'Carter Shappy',
         position: 'Visual Designer',
         description:

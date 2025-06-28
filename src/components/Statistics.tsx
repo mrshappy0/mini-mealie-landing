@@ -1,5 +1,8 @@
 import { useEffect, useState } from 'react';
 
+import { fetchFromMMCApi } from '@/lib/api';
+import { Review } from '@/lib/types';
+
 interface statsProps {
     url: string;
     quantity: string;
@@ -39,16 +42,23 @@ export const Statistics = () => {
     const [animatedUsers, setAnimatedUsers] = useState(1);
 
     useEffect(() => {
-        fetch('https://adott4o6c0.execute-api.us-west-2.amazonaws.com/stats')
-            .then((res) => res.json())
-            .then((data) => {
+        const fetchUserCount = async () => {
+            try {
+                const data = await fetchFromMMCApi<{
+                    reviews: Review[];
+                    scrapedAt: string;
+                    numberOfUsers: string;
+                }>('/stats');
+
                 const parsed = parseInt(data?.numberOfUsers ?? '0', 10);
                 setNumberOfUsers(Number.isNaN(parsed) ? 50 : parsed);
-            })
-            .catch((err) => {
+            } catch (err) {
                 console.error('Failed to fetch stats:', err);
                 setNumberOfUsers(50);
-            });
+            }
+        };
+
+        fetchUserCount();
     }, []);
 
     useEffect(() => {
