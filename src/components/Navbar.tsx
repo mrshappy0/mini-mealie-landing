@@ -1,22 +1,17 @@
-import { useState } from "react";
+import { GitHubLogoIcon } from '@radix-ui/react-icons';
+import { Menu } from 'lucide-react';
+import { useState } from 'react';
+
 import {
     NavigationMenu,
     NavigationMenuItem,
     NavigationMenuList,
-} from "@/components/ui/navigation-menu";
-import {
-    Sheet,
-    SheetContent,
-    SheetHeader,
-    SheetTitle,
-    SheetTrigger,
-} from "@/components/ui/sheet";
+} from '@/components/ui/navigation-menu';
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 
-import { GitHubLogoIcon } from "@radix-ui/react-icons";
-import { buttonVariants } from "./ui/button";
-import { Menu } from "lucide-react";
-import { ModeToggle } from "./mode-toggle";
-import { LogoIcon } from "./Icons";
+import { LogoIcon } from './Icons';
+import { ModeToggle } from './mode-toggle';
+import { buttonVariants } from './ui/button';
 
 interface RouteProps {
     href: string;
@@ -25,24 +20,24 @@ interface RouteProps {
 
 export const routeList: RouteProps[] = [
     {
-        href: "#features",
-        label: "Features",
+        href: '#features',
+        label: 'Features',
     },
     {
-        href: "#testimonials",
-        label: "Testimonials",
+        href: '#testimonials',
+        label: 'Testimonials',
     },
     {
-        href: "#team",
-        label: "Builders",
+        href: '#team',
+        label: 'Builders',
     },
     {
-        href: "#newsletter",
-        label: "Subscribe",
+        href: '#newsletter',
+        label: 'Subscribe',
     },
     {
-        href: "#faq",
-        label: "FAQ",
+        href: '#faq',
+        label: 'FAQ',
     },
 ];
 
@@ -59,9 +54,7 @@ export const Navbar = () => {
                             className="ml-2 font-bold text-xl flex"
                         >
                             <LogoIcon />
-                            <span className="ml-2 content-center">
-                                Mini Mealie
-                            </span>
+                            <span className="ml-2 content-center">Mini Mealie</span>
                         </a>
                     </NavigationMenuItem>
 
@@ -79,37 +72,33 @@ export const Navbar = () => {
                                 </Menu>
                             </SheetTrigger>
 
-                            <SheetContent side={"left"}>
+                            <SheetContent side={'left'}>
                                 <SheetHeader>
                                     <SheetTitle className="font-bold text-xl">
                                         Mini Mealie
                                     </SheetTitle>
                                 </SheetHeader>
                                 <nav className="flex flex-col justify-center items-center gap-2 mt-4">
-                                    {routeList.map(
-                                        ({ href, label }: RouteProps) => (
-                                            <a
-                                                rel="noreferrer noopener"
-                                                key={label}
-                                                href={href}
-                                                onClick={() => setIsOpen(false)}
-                                                className={buttonVariants({
-                                                    variant: "ghost",
-                                                })}
-                                            >
-                                                {label}
-                                            </a>
-                                        )
-                                    )}
+                                    {routeList.map(({ href, label }: RouteProps) => (
+                                        <a
+                                            rel="noreferrer noopener"
+                                            key={label}
+                                            href={href}
+                                            onClick={() => setIsOpen(false)}
+                                            className={buttonVariants({
+                                                variant: 'ghost',
+                                            })}
+                                        >
+                                            {label}
+                                        </a>
+                                    ))}
                                     <a
                                         rel="noreferrer noopener"
                                         href="https://github.com/mrshappy0/mini-mealie"
                                         target="_blank"
-                                        className={`w-[110px] border ${buttonVariants(
-                                            {
-                                                variant: "secondary",
-                                            }
-                                        )}`}
+                                        className={`w-[110px] border ${buttonVariants({
+                                            variant: 'secondary',
+                                        })}`}
                                     >
                                         <GitHubLogoIcon className="mr-2 w-5 h-5" />
                                         Github
@@ -127,7 +116,7 @@ export const Navbar = () => {
                                 href={route.href}
                                 key={i}
                                 className={`text-[17px] ${buttonVariants({
-                                    variant: "ghost",
+                                    variant: 'ghost',
                                 })}`}
                             >
                                 {route.label}
@@ -141,7 +130,7 @@ export const Navbar = () => {
                             href="https://github.com/mrshappy0/mini-mealie"
                             target="_blank"
                             className={`border ${buttonVariants({
-                                variant: "secondary",
+                                variant: 'secondary',
                             })}`}
                         >
                             <GitHubLogoIcon className="mr-2 w-5 h-5" />

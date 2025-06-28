@@ -1,5 +1,5 @@
-import { LogoIcon } from "./Icons";
-import { routeList } from "./Navbar";
+import { LogoIcon } from './Icons';
+import { routeList } from './Navbar';
 
 export const Footer = () => {
     return (
@@ -8,11 +8,7 @@ export const Footer = () => {
 
             <section className="container py-20 grid grid-cols-2 md:grid-cols-4 xl:grid-cols-6 gap-x-12 gap-y-8">
                 <div className="col-span-full xl:col-span-2">
-                    <a
-                        rel="noreferrer noopener"
-                        href="/"
-                        className="font-bold text-xl flex"
-                    >
+                    <a rel="noreferrer noopener" href="/" className="font-bold text-xl flex">
                         <LogoIcon />
                         <span className="ml-2">Mini Mealie</span>
                     </a>
@@ -45,13 +41,16 @@ export const Footer = () => {
                         </a>
                     </div>
 
-                   <div className="opacity-40">
+                    <div className="opacity-40">
                         <a
                             rel="noreferrer noopener"
                             href="#"
                             className="pointer-events-none cursor-not-allowed"
                         >
-                            Firefox <span style={{ color: 'orange', fontStyle: 'italic' }}>- Coming Soon!</span>
+                            Firefox{' '}
+                            <span style={{ color: 'orange', fontStyle: 'italic' }}>
+                                - Coming Soon!
+                            </span>
                         </a>
                     </div>
 
@@ -61,7 +60,10 @@ export const Footer = () => {
                             href="#"
                             className="pointer-events-none cursor-not-allowed"
                         >
-                            Safari <span style={{ color: 'orange', fontStyle: 'italic' }}>- Coming Soon!</span>
+                            Safari{' '}
+                            <span style={{ color: 'orange', fontStyle: 'italic' }}>
+                                - Coming Soon!
+                            </span>
                         </a>
                     </div>
                 </div>
@@ -71,13 +73,13 @@ export const Footer = () => {
                     {routeList.map((route, index) => (
                         <div key={index}>
                             <a
-                            rel="noreferrer noopener"
+                                rel="noreferrer noopener"
                                 href={route.href}
-                            className="opacity-60 hover:opacity-100"
-                        >
+                                className="opacity-60 hover:opacity-100"
+                            >
                                 {route.label}
-                        </a>
-                    </div>
+                            </a>
+                        </div>
                     ))}
                 </div>
 
@@ -89,15 +91,16 @@ export const Footer = () => {
                             href="#"
                             className="opacity-40 pointer-events-none cursor-not-allowed"
                         >
-                            Youtube <span style={{ color: 'orange', fontStyle: 'italic' }}>- Coming Soon!</span>
+                            Youtube{' '}
+                            <span style={{ color: 'orange', fontStyle: 'italic' }}>
+                                - Coming Soon!
+                            </span>
                         </a>
                     </div>
                 </div>
             </section>
             <section className="container pb-14 text-center">
-                <h3>
-                    &copy; {new Date().getFullYear()} Mini Mealie. All rights reserved.
-                </h3>
+                <h3>&copy; {new Date().getFullYear()} Mini Mealie. All rights reserved.</h3>
             </section>
         </footer>
     );

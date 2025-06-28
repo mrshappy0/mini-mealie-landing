@@ -1,50 +1,44 @@
-import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
-import mountainMe from "../assets/mountain-me-GIMPed.jpg";
-import { Badge } from "./ui/badge";
-import { Button, buttonVariants } from "@/components/ui/button";
+import { GitHubLogoIcon } from '@radix-ui/react-icons';
+import { Check, Linkedin } from 'lucide-react';
+import { useEffect, useState } from 'react';
+
+import { Button, buttonVariants } from '@/components/ui/button';
 import {
     Card,
     CardContent,
     CardDescription,
+    CardFooter,
     CardHeader,
     CardTitle,
-    CardFooter,
-} from "@/components/ui/card";
-import { Check, Linkedin } from "lucide-react";
-import { LightBulbIcon } from "./Icons";
-import { GitHubLogoIcon } from "@radix-ui/react-icons";
-import { useEffect, useState } from "react";
-import { mockTestimonials } from "@/lib/constants";
-import { convertReviewsToTestimonials, getInitials } from "@/lib/utils";
-import { TestimonialProps } from "@/lib/types";
+} from '@/components/ui/card';
+import { mockTestimonials } from '@/lib/constants';
+import { TestimonialProps } from '@/lib/types';
+import { convertReviewsToTestimonials, getInitials } from '@/lib/utils';
+
+import mountainMe from '../assets/mountain-me-GIMPed.jpg';
+import { LightBulbIcon } from './Icons';
+import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
+import { Badge } from './ui/badge';
 
 export const HeroCards = () => {
-    const [testimonial, setTestimonial] = useState<TestimonialProps>(
-        mockTestimonials[0]
-    );
+    const [testimonial, setTestimonial] = useState<TestimonialProps>(mockTestimonials[0]);
 
     useEffect(() => {
         const fetchReviews = async () => {
             try {
                 const res = await fetch(
-                    "https://adott4o6c0.execute-api.us-west-2.amazonaws.com/stats"
+                    'https://adott4o6c0.execute-api.us-west-2.amazonaws.com/stats',
                 );
                 const data = await res.json();
-                const fetchedTestimonials = convertReviewsToTestimonials(
-                    data.reviews
-                );
+                const fetchedTestimonials = convertReviewsToTestimonials(data.reviews);
 
                 const sourceData =
-                    fetchedTestimonials.length > 0
-                        ? fetchedTestimonials
-                        : mockTestimonials;
+                    fetchedTestimonials.length > 0 ? fetchedTestimonials : mockTestimonials;
 
-                const randomIndex = Math.floor(
-                    Math.random() * sourceData.length
-                );
+                const randomIndex = Math.floor(Math.random() * sourceData.length);
                 setTestimonial(sourceData[randomIndex]);
             } catch (err) {
-                console.error("Failed to fetch stats:", err);
+                console.error('Failed to fetch stats:', err);
             }
         };
 
@@ -58,24 +52,18 @@ export const HeroCards = () => {
                     <CardHeader className="flex flex-row items-center gap-4 pb-2">
                         <Avatar>
                             <AvatarImage alt="" src="" />
-                            <AvatarFallback>
-                                {getInitials(testimonial.name ?? "")}
-                            </AvatarFallback>
+                            <AvatarFallback>{getInitials(testimonial.name ?? '')}</AvatarFallback>
                         </Avatar>
 
                         <div className="flex flex-col">
-                            <CardTitle className="text-lg">
-                                {testimonial.name}
-                            </CardTitle>
-                            <CardDescription>
-                                {testimonial.userName}
-                            </CardDescription>
+                            <CardTitle className="text-lg">{testimonial.name}</CardTitle>
+                            <CardDescription>{testimonial.userName}</CardDescription>
                         </div>
                     </CardHeader>
 
                     <CardContent>
                         {testimonial.comment.length > 40
-                            ? testimonial.comment.substring(0, 40) + "..."
+                            ? testimonial.comment.substring(0, 40) + '...'
                             : testimonial.comment}
                     </CardContent>
                 </Card>
@@ -97,9 +85,8 @@ export const HeroCards = () => {
 
                 <CardContent className="text-center pb-2">
                     <p>
-                        Empowering self-hosted solutions with open-source tools,
-                        bridging practical development with a passion for
-                        continuous learning.
+                        Empowering self-hosted solutions with open-source tools, bridging practical
+                        development with a passion for continuous learning.
                     </p>
                 </CardContent>
 
@@ -110,8 +97,8 @@ export const HeroCards = () => {
                             href="https://github.com/mrshappy0"
                             target="_blank"
                             className={buttonVariants({
-                                variant: "ghost",
-                                size: "sm",
+                                variant: 'ghost',
+                                size: 'sm',
                             })}
                         >
                             <span className="sr-only">Github icon</span>
@@ -143,8 +130,8 @@ export const HeroCards = () => {
                             href="https://www.linkedin.com/in/adam-shappy/"
                             target="_blank"
                             className={buttonVariants({
-                                variant: "ghost",
-                                size: "sm",
+                                variant: 'ghost',
+                                size: 'sm',
                             })}
                         >
                             <span className="sr-only">Linkedin icon</span>
@@ -158,10 +145,7 @@ export const HeroCards = () => {
                 <CardHeader>
                     <CardTitle className="flex item-center justify-between">
                         Free
-                        <Badge
-                            variant="secondary"
-                            className="text-sm text-primary"
-                        >
+                        <Badge variant="secondary" className="text-sm text-primary">
                             Open Source
                         </Badge>
                     </CardTitle>
@@ -171,8 +155,7 @@ export const HeroCards = () => {
                     </div>
 
                     <CardDescription>
-                        Built for recipe lovers and open-source fans — no
-                        subscriptions, no upsells.
+                        Built for recipe lovers and open-source fans — no subscriptions, no upsells.
                     </CardDescription>
                 </CardHeader>
 
@@ -193,12 +176,12 @@ export const HeroCards = () => {
                 <CardFooter className="flex">
                     <div className="space-y-4">
                         {[
-                            "Local or hosted Mealie",
-                            "Smart recipe detection",
-                            "Paywall bypass built-in",
+                            'Local or hosted Mealie',
+                            'Smart recipe detection',
+                            'Paywall bypass built-in',
                         ].map((benefit: string) => (
                             <span key={benefit} className="flex">
-                                <Check className="text-orange-500" />{" "}
+                                <Check className="text-orange-500" />{' '}
                                 <h3 className="ml-2">{benefit}</h3>
                             </span>
                         ))}
@@ -215,8 +198,8 @@ export const HeroCards = () => {
                     <div>
                         <CardTitle>Actively Growing</CardTitle>
                         <CardDescription className="text-md mt-2">
-                            Built in collaboration with the community—your
-                            feedback drives every improvement.
+                            Built in collaboration with the community—your feedback drives every
+                            improvement.
                         </CardDescription>
                     </div>
                 </CardHeader>

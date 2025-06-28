@@ -1,7 +1,8 @@
-import { Button } from "./ui/button";
-import { buttonVariants } from "./ui/button";
-import { HeroCards } from "./HeroCards";
-import { GitHubLogoIcon } from "@radix-ui/react-icons";
+import { GitHubLogoIcon } from '@radix-ui/react-icons';
+
+import { HeroCards } from './HeroCards';
+import { Button } from './ui/button';
+import { buttonVariants } from './ui/button';
 
 export const Hero = () => {
     return (
@@ -11,20 +12,20 @@ export const Hero = () => {
                     <h1 className="inline">
                         <span className="inline bg-gradient-to-r from-[#FFAE64]  to-[#FF7E19] text-transparent bg-clip-text">
                             Mini Mealie
-                        </span>{" "}
+                        </span>{' '}
                         Your In-Browser
-                    </h1>{" "}
+                    </h1>{' '}
                     <h2 className="inline">
                         <span className="inline bg-gradient-to-r from-[#FF7E19] via-[#FFA347] to-[#FFC178] text-transparent bg-clip-text">
                             Mealie
-                        </span>{" "}
+                        </span>{' '}
                         Assistant
                     </h2>
                 </main>
 
                 <p className="text-xl text-muted-foreground md:w-10/12 mx-auto lg:mx-0">
-                    Build your React landing page effortlessly with the required
-                    sections to your project.
+                    Build your React landing page effortlessly with the required sections to your
+                    project.
                 </p>
 
                 <div className="space-y-4 md:space-y-0 md:space-x-4">
@@ -42,7 +43,7 @@ export const Hero = () => {
                         href="https://github.com/mrshappy0/mini-mealie"
                         target="_blank"
                         className={`w-full md:w-1/3 ${buttonVariants({
-                            variant: "outline",
+                            variant: 'outline',
                         })}`}
                     >
                         Github Repository

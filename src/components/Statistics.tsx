@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
 interface statsProps {
     url: string;
@@ -11,9 +11,7 @@ const fetchNumberOfOpenIssues = async (): Promise<{
     stargazers: number;
 }> => {
     try {
-        const response = await fetch(
-            "https://api.github.com/repos/mrshappy0/mini-mealie"
-        );
+        const response = await fetch('https://api.github.com/repos/mrshappy0/mini-mealie');
         const data = await response.json();
         return {
             openIssues: data.open_issues_count ?? 0,
@@ -21,7 +19,7 @@ const fetchNumberOfOpenIssues = async (): Promise<{
         };
     } catch {
         return {
-            openIssues: "0",
+            openIssues: '0',
             stargazers: 4,
         };
     }
@@ -32,7 +30,7 @@ export const Statistics = () => {
         openIssues: string;
         stargazers: number;
     }>({
-        openIssues: "0",
+        openIssues: '0',
         stargazers: 4,
     });
     const [animatedStars, setAnimatedStars] = useState(0);
@@ -41,14 +39,14 @@ export const Statistics = () => {
     const [animatedUsers, setAnimatedUsers] = useState(1);
 
     useEffect(() => {
-        fetch("https://adott4o6c0.execute-api.us-west-2.amazonaws.com/stats")
+        fetch('https://adott4o6c0.execute-api.us-west-2.amazonaws.com/stats')
             .then((res) => res.json())
             .then((data) => {
-                const parsed = parseInt(data?.numberOfUsers ?? "0", 10);
+                const parsed = parseInt(data?.numberOfUsers ?? '0', 10);
                 setNumberOfUsers(Number.isNaN(parsed) ? 50 : parsed);
             })
             .catch((err) => {
-                console.error("Failed to fetch stats:", err);
+                console.error('Failed to fetch stats:', err);
                 setNumberOfUsers(50);
             });
     }, []);
@@ -105,24 +103,24 @@ export const Statistics = () => {
 
     const stats: statsProps[] = [
         {
-            url: "https://chromewebstore.google.com/detail/Mini%20Mealie/lchfnbjpjoeejalacnpjnafenacmdocc",
+            url: 'https://chromewebstore.google.com/detail/Mini%20Mealie/lchfnbjpjoeejalacnpjnafenacmdocc',
             quantity: `${animatedUsers}+`,
-            description: "Installs",
+            description: 'Installs',
         },
         {
-            url: "https://github.com/mrshappy0/mini-mealie/stargazers",
+            url: 'https://github.com/mrshappy0/mini-mealie/stargazers',
             quantity: `${animatedStars}`,
-            description: "Stargazers",
+            description: 'Stargazers',
         },
         {
-            url: "https://github.com/mrshappy0/mini-mealie/issues",
+            url: 'https://github.com/mrshappy0/mini-mealie/issues',
             quantity: repoData.openIssues,
-            description: "Open Issues",
+            description: 'Open Issues',
         },
         {
-            url: "#features",
-            quantity: "4",
-            description: "Features",
+            url: '#features',
+            quantity: '4',
+            description: 'Features',
         },
     ];
 
@@ -130,23 +128,19 @@ export const Statistics = () => {
         <section id="statistics">
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 text-center text-white">
                 {stats.map(({ quantity, description, url }: statsProps) => {
-                    const isInternal = url.startsWith("#");
+                    const isInternal = url.startsWith('#');
                     return (
                         <a
                             key={description}
                             href={url}
                             {...(!isInternal && {
-                                target: "_blank",
-                                rel: "noopener noreferrer",
+                                target: '_blank',
+                                rel: 'noopener noreferrer',
                             })}
                             className="flex flex-col items-center space-y-1"
                         >
-                            <h2 className="text-3xl sm:text-4xl font-bold ">
-                                {quantity}
-                            </h2>
-                            <p className="text-xl text-muted-foreground">
-                                {description}
-                            </p>
+                            <h2 className="text-3xl sm:text-4xl font-bold ">{quantity}</h2>
+                            <p className="text-xl text-muted-foreground">{description}</p>
                         </a>
                     );
                 })}
