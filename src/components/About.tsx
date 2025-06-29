@@ -13,7 +13,7 @@ export const About = () => {
                                 <span className="bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text">
                                     About{' '}
                                 </span>
-                                ShapLabs
+                                ShapLabs - TEST REMOVE
                             </h2>
                             <p className="text-xl text-muted-foreground mt-4">
                                 ShapLabs is a dynamic hub where creativity meets technology,
