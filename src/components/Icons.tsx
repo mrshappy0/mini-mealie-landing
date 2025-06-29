@@ -2,8 +2,8 @@ export const LogoIcon = () => {
     return (
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="32" // Reduced from 100% to 64 for a smaller size
-            height="32" // Reduced from 100% to 64 for a smaller size
+            width="32"
+            height="32"
             viewBox="0 0 128 128"
             version="1.1"
             style={{
