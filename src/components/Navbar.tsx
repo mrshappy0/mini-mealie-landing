@@ -24,12 +24,20 @@ export const routeList: RouteProps[] = [
         label: 'Features',
     },
     {
+        href: '#about',
+        label: 'About',
+    },
+    {
+        href: '#howItWorks',
+        label: 'Quickstart',
+    },
+    {
         href: '#testimonials',
         label: 'Testimonials',
     },
     {
         href: '#team',
-        label: 'Builders',
+        label: 'Team',
     },
     {
         href: '#newsletter',
