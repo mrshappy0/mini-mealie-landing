@@ -7,7 +7,6 @@ import { Input } from './ui/input';
 export const Newsletter = () => {
     const [email, setEmail] = useState('');
     const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
-    const effectiveTheme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
     const isValidEmail = (email: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
     const handleSubmit = async (e: FormEvent) => {
@@ -32,9 +31,7 @@ export const Newsletter = () => {
 
             if (!res.ok) throw new Error('Failed to subscribe');
             setStatus('success');
-            toast.success('Check your email to confirm your subscription!', {
-                theme: effectiveTheme,
-            });
+            toast.success('Check your email to confirm your subscription!');
             // eslint-disable-next-line @typescript-eslint/no-unused-vars
         } catch (err) {
             setStatus('error');

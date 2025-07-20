@@ -1,7 +1,7 @@
 import './App.css';
 
-import { useEffect } from 'react';
-import { ToastContainer } from 'react-toastify';
+import { useEffect, useRef } from 'react';
+import { toast, ToastContainer } from 'react-toastify';
 
 import { About } from './components/About';
 import { FAQ } from './components/FAQ';
@@ -14,11 +14,46 @@ import { Newsletter } from './components/Newsletter';
 import { ScrollToTop } from './components/ScrollToTop';
 import { Team } from './components/Team';
 import { Testimonials } from './components/Testimonials';
+import { useTheme } from './components/theme-provider';
 import { loadAnalytics } from './lib/analytics';
 
 function App() {
+    const { theme } = useTheme();
+    const hasConfirmed = useRef(false);
+
+    const effectiveTheme =
+        theme === 'system'
+            ? window.matchMedia('(prefers-color-scheme: dark)').matches
+                ? 'dark'
+                : 'light'
+            : theme;
+
     useEffect(() => {
         loadAnalytics();
+
+        const params = new URLSearchParams(window.location.search);
+        const token = params.get('token');
+
+        if (token && !hasConfirmed.current) {
+            hasConfirmed.current = true;
+
+            fetch(`https://edusqp95v5.execute-api.us-west-2.amazonaws.com/confirm?token=${token}`)
+                .then(async (res) => {
+                    if (!res.ok) throw new Error(await res.text());
+                    return res.json();
+                })
+                .then(() => {
+                    toast.success('Successfully confirmed your subscription!');
+                })
+                .catch(() => {
+                    toast.error('Failed to confirm your subscription.');
+                })
+                .finally(() => {
+                    const url = new URL(window.location.href);
+                    url.searchParams.delete('token');
+                    window.history.replaceState({}, document.title, url.pathname);
+                });
+        }
     }, []);
     return (
         <>
@@ -33,7 +68,7 @@ function App() {
             <FAQ />
             <Footer />
             <ScrollToTop />
-            <ToastContainer />
+            <ToastContainer theme={effectiveTheme} />
         </>
     );
 }
