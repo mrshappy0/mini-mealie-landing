@@ -1,4 +1,4 @@
-enum MINI_MEALIE_CLOUD_BASE_URL {
+export enum MINI_MEALIE_CLOUD_BASE_URL {
     Production = 'https://y6lfcntp79.execute-api.us-west-2.amazonaws.com',
     Staging = 'https://edusqp95v5.execute-api.us-west-2.amazonaws.com',
 }

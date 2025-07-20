@@ -16,10 +16,15 @@ import { Team } from './components/Team';
 import { Testimonials } from './components/Testimonials';
 import { useTheme } from './components/theme-provider';
 import { loadAnalytics } from './lib/analytics';
+import { MINI_MEALIE_CLOUD_BASE_URL } from './lib/api';
 
 function App() {
     const { theme } = useTheme();
     const hasConfirmed = useRef(false);
+    const base =
+        import.meta.env.MODE === 'production'
+            ? MINI_MEALIE_CLOUD_BASE_URL.Production
+            : MINI_MEALIE_CLOUD_BASE_URL.Staging;
 
     const effectiveTheme =
         theme === 'system'
@@ -37,7 +42,7 @@ function App() {
         if (token && !hasConfirmed.current) {
             hasConfirmed.current = true;
 
-            fetch(`https://edusqp95v5.execute-api.us-west-2.amazonaws.com/confirm?token=${token}`)
+            fetch(`https://${base}.execute-api.us-west-2.amazonaws.com/confirm?token=${token}`)
                 .then(async (res) => {
                     if (!res.ok) throw new Error(await res.text());
                     return res.json();

@@ -1,6 +1,8 @@
 import { FormEvent, useState } from 'react';
 import { toast } from 'react-toastify';
 
+import { MINI_MEALIE_CLOUD_BASE_URL } from '@/lib/api';
+
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 
@@ -8,6 +10,10 @@ export const Newsletter = () => {
     const [email, setEmail] = useState('');
     const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
     const isValidEmail = (email: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    const base =
+        import.meta.env.MODE === 'production'
+            ? MINI_MEALIE_CLOUD_BASE_URL.Production
+            : MINI_MEALIE_CLOUD_BASE_URL.Staging;
 
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
@@ -17,9 +23,9 @@ export const Newsletter = () => {
         }
         setStatus('loading');
         try {
-            // TODO: use prod endpoint
+            // TODO: dynamically use prod or staging for api
             const res = await fetch(
-                'https://edusqp95v5.execute-api.us-west-2.amazonaws.com/subscribe',
+                `https://${base}.execute-api.us-west-2.amazonaws.com/subscribe`,
                 {
                     method: 'POST',
                     headers: {
