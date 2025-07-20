@@ -1,7 +1,7 @@
 import { FormEvent, useState } from 'react';
 import { toast } from 'react-toastify';
 
-import { MINI_MEALIE_CLOUD_BASE_URL } from '@/lib/api';
+import { fetchFromMMCApi } from '@/lib/api';
 
 import { Button } from './ui/button';
 import { Input } from './ui/input';
@@ -10,32 +10,22 @@ export const Newsletter = () => {
     const [email, setEmail] = useState('');
     const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
     const isValidEmail = (email: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-    const base =
-        import.meta.env.MODE === 'production'
-            ? MINI_MEALIE_CLOUD_BASE_URL.Production
-            : MINI_MEALIE_CLOUD_BASE_URL.Staging;
 
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
 
-        if (!isValidEmail(email)) {
-            return;
-        }
+        if (!isValidEmail(email)) return;
+
         setStatus('loading');
         try {
-            // TODO: dynamically use prod or staging for api
-            const res = await fetch(
-                `https://${base}.execute-api.us-west-2.amazonaws.com/subscribe`,
-                {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ email }),
+            await fetchFromMMCApi<unknown>('/subscribe', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
                 },
-            );
+                body: JSON.stringify({ email }),
+            });
 
-            if (!res.ok) throw new Error('Failed to subscribe');
             setStatus('success');
             toast.success('Check your email to confirm your subscription!');
             // eslint-disable-next-line @typescript-eslint/no-unused-vars
