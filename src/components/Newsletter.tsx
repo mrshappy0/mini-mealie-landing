@@ -1,6 +1,8 @@
 import { FormEvent, useState } from 'react';
 import { toast } from 'react-toastify';
 
+import { fetchFromMMCApi } from '@/lib/api';
+
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 
@@ -12,24 +14,18 @@ export const Newsletter = () => {
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
 
-        if (!isValidEmail(email)) {
-            return;
-        }
+        if (!isValidEmail(email)) return;
+
         setStatus('loading');
         try {
-            // TODO: use prod endpoint
-            const res = await fetch(
-                'https://edusqp95v5.execute-api.us-west-2.amazonaws.com/subscribe',
-                {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ email }),
+            await fetchFromMMCApi<unknown>('/subscribe', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
                 },
-            );
+                body: JSON.stringify({ email }),
+            });
 
-            if (!res.ok) throw new Error('Failed to subscribe');
             setStatus('success');
             toast.success('Check your email to confirm your subscription!');
             // eslint-disable-next-line @typescript-eslint/no-unused-vars
