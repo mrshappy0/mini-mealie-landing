@@ -14,12 +14,9 @@ interface FAQProps {
 }
 
 const handleCopyEmail = async () => {
-    const effectiveTheme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
     try {
         await navigator.clipboard.writeText('atom@shaplabs.net');
-        toast.success('Email address copied to clipboard!', {
-            theme: effectiveTheme,
-        });
+        toast.success('Email address copied to clipboard!');
     } catch (err) {
         console.error('Failed to copy: ', err);
         toast.error('Failed to copy email address.');
