@@ -4,9 +4,12 @@ import { HeroCards } from './HeroCards';
 import { Button } from './ui/button';
 import { buttonVariants } from './ui/button';
 
-export const Hero = () => {
+export const Hero = ({ id }: React.HTMLAttributes<HTMLElement>) => {
     return (
-        <section className="container grid lg:grid-cols-2 place-items-center py-20 md:py-32 gap-10">
+        <section
+            id={id}
+            className="container grid lg:grid-cols-2 place-items-center py-20 md:py-32 gap-10"
+        >
             <div className="text-center lg:text-start space-y-6">
                 <main className="text-5xl md:text-6xl font-bold">
                     <h1 className="inline">
@@ -35,7 +38,7 @@ export const Hero = () => {
                             target="_blank"
                             rel="noopener noreferrer"
                         >
-                            Get Started
+                            Install
                         </a>
                     </Button>
                     <a
