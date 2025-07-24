@@ -48,7 +48,6 @@ export const HeroCards = () => {
         fetchReviews();
     }, []);
 
-    console.log('image url:', testimonial?.image);
     return (
         <div className="hidden lg:flex flex-row flex-wrap gap-8 relative w-[700px] h-[500px]">
             {/* Testimonial */}

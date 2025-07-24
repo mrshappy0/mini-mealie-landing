@@ -10,8 +10,9 @@ import { Footer } from './components/Footer';
 import { Hero } from './components/Hero';
 import { HowItWorks } from './components/HowItWorks';
 import { Navbar } from './components/Navbar';
-import { Newsletter } from './components/Newsletter';
 import { ScrollToTop } from './components/ScrollToTop';
+import { Subscribe } from './components/Subscribe';
+import { SubscribeModal } from './components/SubscribeModal';
 import { Team } from './components/Team';
 import { Testimonials } from './components/Testimonials';
 import { useTheme } from './components/theme-provider';
@@ -55,16 +56,17 @@ function App() {
     return (
         <>
             <Navbar />
-            <Hero />
+            <Hero id="hero" />
             <About />
             <HowItWorks />
             <Features />
             <Testimonials />
             <Team />
-            <Newsletter />
+            <Subscribe id="subscribe" />
             <FAQ />
             <Footer />
             <ScrollToTop />
+            <SubscribeModal />
             <ToastContainer theme={effectiveTheme} />
         </>
     );

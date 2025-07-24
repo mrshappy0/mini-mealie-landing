@@ -1,14 +1,11 @@
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
-import image from '../assets/growth.png';
-import image4 from '../assets/looking-ahead.png';
-import image3 from '../assets/reflecting.png';
 import { Badge } from './ui/badge';
 
 interface FeatureProps {
     title: string;
     description: string;
-    image: string;
+    // image: string;
 }
 
 const features: FeatureProps[] = [
@@ -16,19 +13,16 @@ const features: FeatureProps[] = [
         title: 'Chrome Context Menu',
         description:
             "Mini Mealie enhances functionality by allowing users to add recipes to their Mealie server instance seamlessly; simply right-click on a recipe and select the 'Recipe Detected - Add Recipe to Mealie' option.",
-        image: image4,
     },
     {
-        title: 'Bypass Paywalls',
+        title: 'Smart Recipe Detection',
         description:
-            'Users have the flexibility to manage access by toggling a paywall ladder on or off, which directs the recipe creation process through a paywall when activated.',
-        image: image3,
+            'While you browse, Mini Mealie intelligently detects if a page contains a recipe using Mealie’s test-scrape-url endpoint. You’ll get instant feedback in the context menu before saving.',
     },
     {
         title: 'Seamless Navigation',
         description:
-            'When connected to a server, the Mini Mealie Chrome pop-up icon offers a quick access feature, enabling users to click the icon and be swiftly directed to their Mealie instance.',
-        image: image,
+            'When connected to a server, the Mini Mealie Chrome pop-up icon offers a quick access feature, enabling users to click the icon and be directed to their Mealie instance.',
     },
 ];
 
@@ -36,7 +30,6 @@ const featureList: string[] = [
     'Create Recipe',
     'Recipe Detection',
     'Context Menu',
-    'Paywall Ladder',
     'Local/Remote Access',
     'HTTP/HTTPS Support',
     'Server Link',
@@ -64,21 +57,13 @@ export const Features = () => {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {features.map(({ title, description, image }: FeatureProps) => (
+                {features.map(({ title, description }: FeatureProps) => (
                     <Card key={title}>
                         <CardHeader>
                             <CardTitle>{title}</CardTitle>
                         </CardHeader>
 
                         <CardContent>{description}</CardContent>
-
-                        <CardFooter>
-                            <img
-                                src={image}
-                                alt="About feature"
-                                className="w-[200px] lg:w-[300px] mx-auto"
-                            />
-                        </CardFooter>
                     </Card>
                 ))}
             </div>
