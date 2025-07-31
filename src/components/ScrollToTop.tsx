@@ -25,6 +25,10 @@ export const ScrollToTop = () => {
 
     const goToTop = () => {
         window.scroll({ top: 0, left: 0 });
+
+        const url = new URL(window.location.href);
+        url.hash = '';
+        window.history.replaceState({}, document.title, url.toString());
     };
 
     return (

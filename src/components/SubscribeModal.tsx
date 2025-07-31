@@ -2,7 +2,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 
 export const SubscribeModal = () => {
-    const [visible, setVisible] = useState(true); // show immediately on mount
+    const [visible, setVisible] = useState(true);
 
     useEffect(() => {
         const subscribeEl = document.getElementById('subscribe');
@@ -12,12 +12,11 @@ export const SubscribeModal = () => {
             const rect = subscribeEl.getBoundingClientRect();
             const isSubscribeVisible = rect.top < window.innerHeight && rect.bottom > 0;
 
-            // hide modal if subscribe section is visible
             setVisible(!isSubscribeVisible);
         };
 
         window.addEventListener('scroll', handleScroll);
-        handleScroll(); // check on mount
+        handleScroll();
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
@@ -33,10 +32,17 @@ export const SubscribeModal = () => {
                 >
                     <button
                         onClick={() => {
-                            document
-                                .getElementById('subscribe')
-                                ?.scrollIntoView({ behavior: 'smooth' });
-                            setVisible(false);
+                            const el = document.getElementById('subscribe');
+                            if (el) {
+                                el.scrollIntoView({ behavior: 'smooth' });
+
+                                // Update the URL hash without reloading the page
+                                const url = new URL(window.location.href);
+                                url.hash = 'subscribe';
+                                window.history.pushState({}, '', url.toString());
+
+                                setVisible(false);
+                            }
                         }}
                         className="inline-flex items-center justify-center h-10 px-4 rounded-md text-sm font-medium bg-primary text-primary-foreground hover:bg-primary/90 shadow-md transition-colors"
                     >
