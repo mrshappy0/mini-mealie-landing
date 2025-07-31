@@ -40,7 +40,7 @@ export const SubscribeModal = () => {
                         }}
                         className="inline-flex items-center justify-center h-10 px-4 rounded-md text-sm font-medium bg-primary text-primary-foreground hover:bg-primary/90 shadow-md transition-colors"
                     >
-                        Subscribe for updates
+                        Subscribe for Updates
                     </button>
                 </motion.div>
             )}

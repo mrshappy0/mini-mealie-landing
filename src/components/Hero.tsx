@@ -27,8 +27,7 @@ export const Hero = ({ id }: React.HTMLAttributes<HTMLElement>) => {
                 </main>
 
                 <p className="text-xl text-muted-foreground md:w-10/12 mx-auto lg:mx-0">
-                    Build your React landing page effortlessly with the required sections to your
-                    project.
+                    A minimalist browser extension for working with your Mealie instance.
                 </p>
 
                 <div className="space-y-4 md:space-y-0 md:space-x-4">
