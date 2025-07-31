@@ -1,4 +1,4 @@
-import { GiftIcon, MapIcon, MedalIcon, PlaneIcon } from '../components/Icons';
+import { GiftIcon, MapIcon, MedalIcon, PlaneIcon } from './Icons';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 
 interface FeatureProps {
@@ -43,9 +43,9 @@ const features: FeatureProps[] = [
     },
 ];
 
-export const HowItWorks = () => {
+export const Quickstart = () => {
     return (
-        <section id="howItWorks" className="container text-center py-24 sm:py-32">
+        <section id="quickstart" className="container text-center py-24 sm:py-32">
             <h2 className="text-3xl md:text-4xl font-bold ">
                 Step-by-Step{' '}
                 <span className="bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text">

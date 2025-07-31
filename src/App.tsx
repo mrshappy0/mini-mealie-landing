@@ -8,8 +8,8 @@ import { FAQ } from './components/FAQ';
 import { Features } from './components/Features';
 import { Footer } from './components/Footer';
 import { Hero } from './components/Hero';
-import { HowItWorks } from './components/HowItWorks';
 import { Navbar } from './components/Navbar';
+import { Quickstart } from './components/Quickstart';
 import { ScrollToTop } from './components/ScrollToTop';
 import { Subscribe } from './components/Subscribe';
 import { SubscribeModal } from './components/SubscribeModal';
@@ -52,13 +52,23 @@ function App() {
                     window.history.replaceState({}, document.title, url.pathname);
                 });
         }
+
+        if (window.location.hash) {
+            // Wait for DOM to fully mount
+            requestAnimationFrame(() => {
+                const el = document.querySelector(window.location.hash);
+                if (el) {
+                    el.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        }
     }, []);
     return (
         <>
             <Navbar />
             <Hero id="hero" />
             <About />
-            <HowItWorks />
+            <Quickstart />
             <Features />
             <Testimonials />
             <Team />
