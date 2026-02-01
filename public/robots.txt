@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mini-mealie.shaplabs.org/sitemap.xml
