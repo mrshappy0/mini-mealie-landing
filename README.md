@@ -15,7 +15,7 @@ The Mini Mealie Landing Page serves as the promotional and informational hub for
 -   [x] Key Features
 -   [x] Testimonials
 -   [x] Our Builders (Team)
--   [ ] Newsletter (In-progress)
+-   [x] Newsletter
 -   [x] FAQ
 -   [x] Footer
 
