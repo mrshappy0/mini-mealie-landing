@@ -9,6 +9,7 @@ export default defineConfig({
         sitemap({
             hostname: 'https://mini-mealie.shaplabs.org',
             dynamicRoutes: ['/'],
+            // Note: Google ignores changefreq and priority as of 2024, but kept for other search engines
             changefreq: 'monthly',
             priority: 1.0,
         }),
