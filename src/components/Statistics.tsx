@@ -62,7 +62,7 @@ export const Statistics = () => {
     }, []);
 
     useEffect(() => {
-        if (!numberOfUsers) return;
+        if (numberOfUsers === null) return;
 
         let current = 1;
         let step = 1;
@@ -112,11 +112,15 @@ export const Statistics = () => {
     }, [repoData.stargazers]);
 
     const stats: statsProps[] = [
-        {
-            url: 'https://chromewebstore.google.com/detail/Mini%20Mealie/lchfnbjpjoeejalacnpjnafenacmdocc',
-            quantity: `${animatedUsers}+`,
-            description: 'Installs',
-        },
+        ...(numberOfUsers
+            ? [
+                  {
+                      url: 'https://chromewebstore.google.com/detail/Mini%20Mealie/lchfnbjpjoeejalacnpjnafenacmdocc',
+                      quantity: `${animatedUsers}+`,
+                      description: 'Installs',
+                  },
+              ]
+            : []),
         {
             url: 'https://github.com/mrshappy0/mini-mealie/stargazers',
             quantity: `${animatedStars}`,
@@ -136,7 +140,11 @@ export const Statistics = () => {
 
     return (
         <section id="statistics">
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 text-center text-white">
+            <div
+                className={`grid grid-cols-2 ${
+                    stats.length >= 4 ? 'sm:grid-cols-4' : 'sm:grid-cols-3'
+                } gap-6 text-center text-white`}
+            >
                 {stats.map(({ quantity, description, url }: statsProps) => {
                     const isInternal = url.startsWith('#');
                     return (
