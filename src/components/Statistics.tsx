@@ -14,11 +14,19 @@ const fetchNumberOfOpenIssues = async (): Promise<{
     stargazers: number;
 }> => {
     try {
-        const response = await fetch('https://api.github.com/repos/mrshappy0/mini-mealie');
-        const data = await response.json();
+        const [repoResponse, issuesResponse] = await Promise.all([
+            fetch('https://api.github.com/repos/mrshappy0/mini-mealie'),
+            fetch(
+                'https://api.github.com/search/issues?q=repo:mrshappy0/mini-mealie+type:issue+state:open',
+            ),
+        ]);
+        const repoData = await repoResponse.json();
+        const issuesData = await issuesResponse.json();
         return {
-            openIssues: data.open_issues_count ?? 0,
-            stargazers: data.stargazers_count ?? 0,
+            // GitHub's repo API lumps open PRs into open_issues_count, so the
+            // search API (filtered to type:issue) is used for an accurate count.
+            openIssues: issuesData.total_count ?? 0,
+            stargazers: repoData.stargazers_count ?? 0,
         };
     } catch {
         return {
